@@ -1,0 +1,40 @@
+body {
+    font-family: Arial, sans-serif;
+    direction: rtl;
+    padding: 20px;
+}
+
+.upload-container {
+    margin-bottom: 20px;
+}
+
+.file-list {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.file-item {
+    margin: 10px;
+    text-align: center;
+}
+
+.folder-icon, .pdf-icon {
+    width: 60px;
+    height: 60px;
+    display: block;
+    margin: 0 auto;
+}
+
+.folder-icon {
+    background-color: blue;
+    clip-path: circle(50%);
+}
+
+.pdf-icon {
+    background-color: #4caf50;
+    clip-path: circle(50%);
+}
+
+.file-name {
+    margin-top: 5px;
+}
