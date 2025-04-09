@@ -1,50 +1,121 @@
-
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
   <title>امتحان البكتريا الوزاري</title>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@500;700&display=swap" rel="stylesheet">
   <style>
     body {
-      background: linear-gradient(to right, #2c3e50, #34495e);
+      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
       color: white;
-      font-family: 'Arial', sans-serif;
+      font-family: 'Tajawal', sans-serif;
       text-align: center;
       padding-top: 100px;
+      margin: 0;
     }
+
     h1 {
-      font-size: 40px;
-      margin-bottom: 50px;
-      background: linear-gradient(45deg, #f39c12, #e74c3c);
+      font-size: 45px;
+      margin-bottom: 60px;
+      background: linear-gradient(90deg, #00c9ff, #92fe9d);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+      animation: pulse 3s infinite ease-in-out;
     }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.05); opacity: 0.8; }
+    }
+
     #timer {
-      font-size: 30px;
       display: flex;
       justify-content: center;
-      gap: 30px;
+      gap: 35px;
+      flex-wrap: wrap;
+      padding: 0 20px;
     }
+
     .time-box {
-      text-align: center;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      padding: 25px;
+      width: 120px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+      transition: transform 0.3s ease;
     }
+
+    .time-box:hover {
+      transform: translateY(-5px);
+    }
+
     .number {
       font-size: 50px;
       font-weight: bold;
     }
+
     .label {
       font-size: 20px;
-      margin-top: 5px;
+      margin-top: 10px;
     }
+
     .day { color: #1abc9c; }
     .hour { color: #e74c3c; }
     .minute { color: #f39c12; }
     .second { color: #9b59b6; }
+
+    footer {
+      margin-top: 60px;
+      font-size: 14px;
+      color: #aaa;
+    }
+
+    /* الشخطات */
+    .menu-icon {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 30px;
+      cursor: pointer;
+    }
+
+    /* القائمة المنبثقة */
+    .menu {
+      display: none;
+      position: absolute;
+      top: 60px;
+      right: 20px;
+      background-color: #333;
+      border-radius: 10px;
+      padding: 10px;
+      text-align: right;
+    }
+
+    .menu a {
+      color: white;
+      padding: 10px;
+      text-decoration: none;
+      display: block;
+    }
+
+    .menu a:hover {
+      background-color: #555;
+    }
+
+    .show-menu {
+      display: block;
+    }
   </style>
 </head>
 <body>
-  <h1>امتحان البكتريا الوزاري</h1>
+  <h1 id="examTitle">امتحان البكتريا الوزاري</h1>
+  <div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
+  <div id="menu" class="menu">
+    <a href="#" onclick="setParasiteExam()">امتحان الطفيليات الوزاري</a>
+  </div>
+
   <div id="timer">
+    <!-- ترتيب يدوي: أيام أولاً -->
     <div class="time-box day">
       <div class="number" id="days">--</div>
       <div class="label">يوم</div>
@@ -63,15 +134,18 @@
     </div>
   </div>
 
+  <footer id="footer">العد التنازلي لامتحان البكتريا الوزاري - بالتوفيق</footer>
+
   <script>
-    const targetDate = new Date("May 4, 2025 10:00:00 GMT+3").getTime();
+    let targetDate = new Date("May 4, 2025 10:00:00 GMT+3").getTime();
+    let examType = 'bacteria'; // default exam type
 
     const updateCountdown = () => {
       const now = new Date().getTime();
       const diff = targetDate - now;
 
       if (diff <= 0) {
-        document.getElementById("timer").innerHTML = "حان وقت الامتحان!";
+        document.getElementById("timer").innerHTML = "<h2>حان وقت الامتحان!</h2>";
         return;
       }
 
@@ -87,7 +161,38 @@
     };
 
     setInterval(updateCountdown, 1000);
-    updateCountdown(); // Run initially
+    updateCountdown();
+
+    // Toggle menu visibility
+    function toggleMenu() {
+      document.getElementById('menu').classList.toggle('show-menu');
+    }
+
+    // Set the target date for the parasites exam
+    function setParasiteExam() {
+      examType = 'parasites';
+      targetDate = new Date("May 8, 2025 10:00:00 GMT+3").getTime();
+      document.getElementById("examTitle").innerText = "امتحان الطفيليات الوزاري";
+      // Update menu to show bacteria option
+      document.querySelector("#menu a").innerText = "امتحان البكتريا الوزاري";
+      document.querySelector("#menu a").setAttribute("onclick", "setBacteriaExam()");
+      // Update footer text
+      document.getElementById("footer").innerText = "العد التنازلي لامتحان الطفيليات الوزاري - بالتوفيق";
+      updateCountdown();
+    }
+
+    // Set the target date for the bacteria exam
+    function setBacteriaExam() {
+      examType = 'bacteria';
+      targetDate = new Date("May 4, 2025 10:00:00 GMT+3").getTime();
+      document.getElementById("examTitle").innerText = "امتحان البكتريا الوزاري";
+      // Update menu to show parasites option
+      document.querySelector("#menu a").innerText = "امتحان الطفيليات الوزاري";
+      document.querySelector("#menu a").setAttribute("onclick", "setParasiteExam()");
+      // Update footer text
+      document.getElementById("footer").innerText = "العد التنازلي لامتحان البكتريا الوزاري - بالتوفيق";
+      updateCountdown();
+    }
   </script>
 </body>
 </html>
