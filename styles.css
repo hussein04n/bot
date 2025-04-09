@@ -1,40 +1,105 @@
 body {
-    font-family: Arial, sans-serif;
-    direction: rtl;
-    padding: 20px;
+    font-family: 'Open Sans', sans-serif;
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    text-align: center;
+    max-width: 800px;
+    margin: 20px;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+header {
+    margin-bottom: 30px;
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
 }
 
 .upload-container {
-    margin-bottom: 20px;
+    margin-bottom: 30px;
+}
+
+input[type="file"] {
+    background-color: #4caf50;
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+input[type="file"]:hover {
+    background-color: #45a049;
 }
 
 .file-list {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
 }
 
 .file-item {
-    margin: 10px;
+    background-color: #fff;
+    padding: 15px;
+    margin: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 150px;
     text-align: center;
+    transition: all 0.3s ease;
+}
+
+.file-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
 }
 
 .folder-icon, .pdf-icon {
-    width: 60px;
-    height: 60px;
+    width: 70px;
+    height: 70px;
+    margin-bottom: 10px;
+    border-radius: 50%;
     display: block;
     margin: 0 auto;
 }
 
 .folder-icon {
-    background-color: blue;
-    clip-path: circle(50%);
+    background-color: #0d6efd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 30px;
 }
 
 .pdf-icon {
-    background-color: #4caf50;
-    clip-path: circle(50%);
+    background-color: #28a745;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 30px;
 }
 
 .file-name {
-    margin-top: 5px;
+    font-size: 14px;
+    color: #333;
+    font-weight: 600;
 }
