@@ -5,12 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>عرض ملفات PDF</title>
     <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="upload-container">
-        <input type="file" id="fileInput" multiple accept="application/pdf" />
+    <div class="container">
+        <header>
+            <h1>رفع وعرض ملفات PDF</h1>
+            <p>قم بتحميل ملفات PDF لعرضها هنا!</p>
+        </header>
+
+        <div class="upload-container">
+            <input type="file" id="fileInput" multiple accept="application/pdf" />
+        </div>
+
+        <div id="fileList" class="file-list"></div>
     </div>
-    <div id="fileList" class="file-list"></div>
 
     <script src="script.js"></script>
 </body>
