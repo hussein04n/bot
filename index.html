@@ -3,24 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>عرض ملفات PDF</title>
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>رفع الملفات إلى IPFS</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            text-align: center;
+            max-width: 600px;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        input[type="file"] {
+            margin: 20px 0;
+        }
+
+        #statusMessage {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
         <header>
-            <h1>رفع وعرض ملفات PDF</h1>
-            <p>قم بتحميل ملفات PDF لعرضها هنا!</p>
+            <h1>رفع الملفات إلى IPFS</h1>
+            <p>اختر ملف أو ملف مضغوط لرفعه إلى IPFS.</p>
         </header>
 
-        <div class="upload-container">
-            <input type="file" id="fileInput" multiple accept="application/pdf" />
-        </div>
+        <input type="file" id="fileInput" />
+        <button id="uploadButton">رفع الملف</button>
 
-        <div id="fileList" class="file-list"></div>
+        <div id="statusMessage"></div>
     </div>
 
-    <script src="script.js"></script>
+    <script src="app.js"></script>
 </body>
 </html>
